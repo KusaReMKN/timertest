@@ -41,7 +41,7 @@ main(int argc, char *argv[])
 	timer_t timerid;
 	struct termios raw;
 	fd_set rfds;
-	size_t sumread;
+	volatile size_t sumread;
 	ssize_t nread;
 	char buf[READSIZE];
 	struct itimerspec it;
