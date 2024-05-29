@@ -56,7 +56,8 @@ main(int argc, char *argv[])
 	/* Jumping from signal handlers */
 	switch (sigsetjmp(env, 1)) {
 	case SIGINT:
-		goto quit;
+		exit(EXIT_SUCCESS);
+		/* NOTREACHED */
 	case SIGUSR1:
 		printf("Read %zu bytes\r\n", sumread);
 		goto next;
@@ -111,7 +112,5 @@ next:
 		if (timer_settime(timerid, 0, &it, NULL) == -1)
 			err(EXIT_FAILURE, "timer_settime");
 	}
-
-quit:
-	return 0;
+	/* NOTREACHED */
 }
