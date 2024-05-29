@@ -18,7 +18,7 @@ static struct termios prev;
 /*
  * Signal handler
  */
-void
+static void
 handler(int sig)
 {
 	siglongjmp(env, sig);
@@ -27,7 +27,7 @@ handler(int sig)
 /*
  * Termination handler
  */
-void
+static void
 quit(void)
 {
 	(void)tcsetattr(STDIN_FILENO, TCSAFLUSH, &prev);
